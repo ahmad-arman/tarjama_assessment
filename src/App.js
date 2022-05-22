@@ -1,38 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-import {BrowserRouter, Routes,Route} from 'react-router-dom'
-import Menu from './component/menu/menu';
-import Users from './component/users/users';
-import Posts from './component/posts/posts';
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Error from "./component/error/error";
+import Login from "./component/login/login";
+import Header from "./component/header/header";
+import Menu from "./component/main/main";
+import Profile from "./component/profile/profile";
+import Users from "./component/users/users";
+import Posts from "./component/posts/posts";
 function App() {
   return (
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <h1 className="text-3xl font-bold underline">
-    //   Hello world!
-    // </h1>
-
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
-    <> 
-    <BrowserRouter>   
-    <Routes> 
-       
-    <Route  path="/" element={<Menu /> } />
-    <Route  path="/users" element={<Users /> } />
-    <Route  path="/posts" element={<Posts /> } />
-      
-    </Routes>
-     </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={[<Login />]} />
+          <Route path="*" element={[<Error />]} />
+          <Route path="/main" element={[<Header />, <Menu />]} />
+          <Route path="/profile/:id" element={[<Header />, <Profile />]} />
+          <Route path="/users" element={[<Header />, <Users />]} />
+          <Route path="/posts" element={[<Header />, <Posts />]} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
